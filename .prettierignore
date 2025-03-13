@@ -1,0 +1,38 @@
+# Build output
+.next/
+build/
+out/
+dist/
+
+# markdown files
+*.md
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Coverage directory
+coverage/
+
+# Cache
+.eslintcache
+.cache/
+
+# Misc
+.DS_Store
+.env*
+!.env.example
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Turbo
+.turbo
+
+# Generated files
+public/sitemap*.xml
+public/robots.txt
