@@ -13,9 +13,9 @@ export default function Contact() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className="grow">
         {/* Hero section */}
-        <section className="bg-gradient-to-r from-pink-100 via-pink-200 to-purple-100 py-16 md:py-24">
+        <section className="bg-linear-to-r from-pink-100 via-pink-200 to-purple-100 py-16 md:py-24">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
               <motion.h1
@@ -47,7 +47,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-xl shadow-sm p-8"
+                className="bg-white rounded-xl shadow-xs p-8"
               >
                 <h2 className="text-2xl font-bold text-pink-600 mb-6">Send Us a Message</h2>
 
@@ -212,7 +212,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl shadow-sm"
+                  className="bg-white p-6 rounded-xl shadow-xs"
                 >
                   <h3 className="text-lg font-medium text-pink-600 mb-2">How long does shipping take?</h3>
                   <p className="text-pink-700">
@@ -225,7 +225,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl shadow-sm"
+                  className="bg-white p-6 rounded-xl shadow-xs"
                 >
                   <h3 className="text-lg font-medium text-pink-600 mb-2">What is your return policy?</h3>
                   <p className="text-pink-700">
@@ -238,7 +238,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl shadow-sm"
+                  className="bg-white p-6 rounded-xl shadow-xs"
                 >
                   <h3 className="text-lg font-medium text-pink-600 mb-2">Are Hair Cliques safe for children?</h3>
                   <p className="text-pink-700">
@@ -251,7 +251,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl shadow-sm"
+                  className="bg-white p-6 rounded-xl shadow-xs"
                 >
                   <h3 className="text-lg font-medium text-pink-600 mb-2">How do I care for my Hair Cliques?</h3>
                   <p className="text-pink-700">

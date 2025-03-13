@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-pink-100 bg-white/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-pink-100 bg-white/80 backdrop-blur-xs">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Button variant="ghost" size="icon" className="md:hidden text-pink-500">
@@ -14,7 +14,7 @@ export function Header() {
           </Button>
 
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 text-transparent bg-clip-text">Hair Cliques</span>
+            <span className="text-2xl font-bold bg-linear-to-r from-pink-400 to-purple-500 text-transparent bg-clip-text">Hair Cliques</span>
           </Link>
 
           <nav className="hidden md:flex gap-6">

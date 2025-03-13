@@ -126,9 +126,9 @@ export default function Shop() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className="grow">
         {/* Hero banner */}
-        <div className="bg-gradient-to-r from-pink-100 via-pink-200 to-purple-100 py-12">
+        <div className="bg-linear-to-r from-pink-100 via-pink-200 to-purple-100 py-12">
           <div className="container">
             <div className="text-center">
               <h1 className="text-4xl font-bold text-pink-600 mb-2">Shop Hair Cliques</h1>
@@ -157,7 +157,7 @@ export default function Shop() {
             <div className="flex items-center gap-4">
               <span className="text-sm text-pink-600">Sort by:</span>
               <select
-                className="border border-pink-200 rounded-md p-2 text-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="border border-pink-200 rounded-md p-2 text-pink-700 focus:outline-hidden focus:ring-2 focus:ring-pink-300"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortType)}
               >
@@ -214,7 +214,7 @@ export default function Shop() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow"
               >
                 <div className="absolute top-2 left-2 z-10 flex gap-1">
                   {product.new && (
@@ -232,7 +232,7 @@ export default function Shop() {
                       alt={product.name}
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <Button
                       variant="ghost"
                       size="icon"

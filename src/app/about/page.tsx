@@ -10,9 +10,9 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className="grow">
         {/* Hero section */}
-        <section className="bg-gradient-to-r from-pink-100 via-pink-200 to-purple-100 py-16 md:py-24">
+        <section className="bg-linear-to-r from-pink-100 via-pink-200 to-purple-100 py-16 md:py-24">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
               <motion.h1
@@ -51,7 +51,7 @@ export default function About() {
                     alt="Woman with curly hair"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-600/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent"></div>
                 </div>
               </motion.div>
 
@@ -120,7 +120,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +138,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -156,7 +156,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +273,7 @@ export default function About() {
         </section>
 
         {/* Values */}
-        <section className="py-16 bg-gradient-to-r from-pink-100 to-purple-100">
+        <section className="py-16 bg-linear-to-r from-pink-100 to-purple-100">
           <div className="container">
             <div className="text-center mb-12">
               <motion.h2
@@ -293,7 +293,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <h3 className="text-xl font-medium text-pink-600 mb-2">Innovation</h3>
                 <p className="text-pink-700">
@@ -306,7 +306,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <h3 className="text-xl font-medium text-pink-600 mb-2">Inclusivity</h3>
                 <p className="text-pink-700">
@@ -319,7 +319,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm"
+                className="bg-white p-6 rounded-xl shadow-xs"
               >
                 <h3 className="text-xl font-medium text-pink-600 mb-2">Sustainability</h3>
                 <p className="text-pink-700">

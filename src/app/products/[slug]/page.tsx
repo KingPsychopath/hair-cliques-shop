@@ -147,7 +147,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-grow flex items-center justify-center">
+        <main className="grow flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-pink-600 mb-4">Product Not Found</h1>
             <p className="text-pink-700 mb-6">Sorry, we couldn't find the product you're looking for.</p>
@@ -180,7 +180,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      <main className="grow">
         {/* Breadcrumbs */}
         <div className="bg-pink-50 py-4">
           <div className="container">
@@ -366,14 +366,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold text-pink-600 mb-8">Product Details</h2>
 
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+              <div className="bg-white rounded-xl shadow-xs overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-pink-100">
                   <div className="p-6">
                     <h3 className="text-lg font-medium text-pink-600 mb-4">Features</h3>
                     <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <span className="bg-pink-100 text-pink-600 rounded-full h-5 w-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="bg-pink-100 text-pink-600 rounded-full h-5 w-5 flex items-center justify-center shrink-0 mt-0.5">
                             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
                               <path
                                 fillRule="evenodd"
@@ -430,7 +430,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                     viewport={{ once: true }}
-                    className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                    className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow"
                   >
                     <Link href={`/products/${relatedSlug}`}>
                       <div className="aspect-square overflow-hidden relative">
@@ -439,7 +439,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                           alt={relatedProduct.name}
                           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
 
                       <div className="p-4">

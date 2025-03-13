@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export function Newsletter() {
   return (
-    <section className="py-24 bg-gradient-to-r from-pink-100 to-purple-100">
+    <section className="py-24 bg-linear-to-r from-pink-100 to-purple-100">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ export function Newsletter() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-full border border-pink-200 focus:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-200"
+                className="flex-1 px-4 py-3 rounded-full border border-pink-200 focus:border-pink-400 focus:outline-hidden focus:ring-2 focus:ring-pink-200"
               />
               <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6">
                 Subscribe

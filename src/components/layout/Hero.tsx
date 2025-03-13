@@ -8,7 +8,7 @@ export function Hero() {
   const scrollY = useScrollPosition();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-pink-50 to-purple-50">
+    <div className="relative min-h-screen overflow-hidden bg-linear-to-b from-white via-pink-50 to-purple-50">
       {/* 3D Model Animation */}
       <HairClipScene scrollY={scrollY} />
 
@@ -48,7 +48,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm"
+              className="bg-white/80 backdrop-blur-xs p-6 rounded-xl shadow-xs"
             >
               <h3 className="font-bold text-pink-500 mb-2">Magnetic Design</h3>
               <p className="text-pink-700 text-sm">
@@ -60,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm"
+              className="bg-white/80 backdrop-blur-xs p-6 rounded-xl shadow-xs"
             >
               <h3 className="font-bold text-pink-500 mb-2">Low Tension</h3>
               <p className="text-pink-700 text-sm">
@@ -72,7 +72,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm"
+              className="bg-white/80 backdrop-blur-xs p-6 rounded-xl shadow-xs"
             >
               <h3 className="font-bold text-pink-500 mb-2">All Hair Types</h3>
               <p className="text-pink-700 text-sm">

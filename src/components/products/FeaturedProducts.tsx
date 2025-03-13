@@ -81,7 +81,7 @@ export function FeaturedProducts() {
             <motion.div
               key={product.id}
               variants={item}
-              className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="group relative bg-pink-50 rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow"
             >
               <Link href={`/products/${product.slug}`} className="block">
                 <div className="aspect-square overflow-hidden relative">
@@ -90,7 +90,7 @@ export function FeaturedProducts() {
                     alt={product.name}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <Button
                     variant="ghost"
                     size="icon"

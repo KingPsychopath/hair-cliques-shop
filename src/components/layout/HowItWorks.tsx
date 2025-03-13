@@ -57,7 +57,7 @@ export function HowItWorks() {
                     alt={step.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-600/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-pink-600/40 to-transparent"></div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-pink-500 text-white flex items-center justify-center text-2xl font-bold z-10">
                     {step.id}
                   </div>
