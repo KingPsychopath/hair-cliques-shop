@@ -130,9 +130,8 @@ const StarRating = ({ rating }: { rating: number }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`h-4 w-4 ${
-            star <= Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
-          }`}
+          className={`h-4 w-4 ${star <= Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
+            }`}
         />
       ))}
     </div>
@@ -238,9 +237,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   {product.images.map((image, index) => (
                     <button
                       key={index}
-                      className={`border rounded-md overflow-hidden aspect-square w-16 ${
-                        activeImage === index ? 'border-pink-500' : 'border-gray-200'
-                      }`}
+                      className={`border rounded-md overflow-hidden aspect-square w-16 ${activeImage === index ? 'border-pink-500' : 'border-gray-200'
+                        }`}
                       onClick={() => setActiveImage(index)}
                     >
                       <img
@@ -282,11 +280,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       <button
                         key={color.name}
                         type="button"
-                        className={`w-9 h-9 rounded-full flex items-center justify-center ${
-                          selectedColor.name === color.name
+                        className={`w-9 h-9 rounded-full flex items-center justify-center ${selectedColor.name === color.name
                             ? 'ring-2 ring-pink-500 ring-offset-2'
                             : ''
-                        }`}
+                          }`}
                         onClick={() => setSelectedColor(color)}
                         title={color.name}
                       >
