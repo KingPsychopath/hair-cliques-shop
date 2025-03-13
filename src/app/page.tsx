@@ -10,17 +10,17 @@ import { Newsletter } from '@/components/layout/Newsletter';
 import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="grow">
-        <Hero />
-        <FeaturedProducts />
-        <HowItWorks />
-        <SimpleTestimonials />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="grow">
+                <Hero />
+                <FeaturedProducts />
+                <HowItWorks />
+                <SimpleTestimonials />
+                <Newsletter />
+            </main>
+            <Footer />
+        </div>
+    );
 }
