@@ -53,8 +53,8 @@ function AnimatedScene({ scrollY, isNightMode, transitionProgress }: { scrollY: 
         }
     });
 
-    // Calculate star opacity based on transition
-    const starOpacity = isNightMode
+    // Calculate star visibility based on transition
+    const starVisibility = isNightMode
         ? Math.min(0.2 + transitionProgress * 0.8, 1)
         : Math.max(1 - transitionProgress * 1.2, 0);
 
@@ -71,15 +71,15 @@ function AnimatedScene({ scrollY, isNightMode, transitionProgress }: { scrollY: 
                 maxPolarAngle={Math.PI / 1.8}
                 minPolarAngle={Math.PI / 3}
             />
+            {/* Apply visibility through material opacity in useFrame */}
             <Stars
                 radius={100}
                 depth={50}
                 count={1500}
-                factor={6}
-                saturation={1}
+                factor={starVisibility * 6}
+                saturation={starVisibility}
                 fade
                 speed={1.5}
-                opacity={starOpacity}
             />
         </>
     );

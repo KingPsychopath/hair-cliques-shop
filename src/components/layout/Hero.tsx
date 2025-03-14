@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import HairClipScene from '@/components/3d/HairClipScene';
 import { useScrollPosition } from '@/lib/hooks/useScrollPosition';
@@ -7,6 +7,16 @@ import Link from 'next/link';
 
 export function Hero() {
     const scrollY = useScrollPosition();
+    const [pulseEffect, setPulseEffect] = useState(false);
+
+    // Create a pulsing effect for the scroll indicator
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPulseEffect(prev => !prev);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const handleScrollClick = () => {
         // Find the next section after hero and scroll to it smoothly
@@ -102,27 +112,76 @@ export function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Scroll indicator */}
+                {/* Enhanced Scroll indicator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
                     className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
                 >
-                    <div
-                        className="flex flex-col items-center text-pink-400 cursor-pointer hover:text-pink-500 transition-colors"
+                    <motion.div
+                        className="flex flex-col items-center cursor-pointer"
                         onClick={handleScrollClick}
                         role="button"
                         tabIndex={0}
                         onKeyPress={(e) => e.key === 'Enter' && handleScrollClick()}
+                        animate={{
+                            y: pulseEffect ? -4 : 0,
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            ease: "easeInOut",
+                        }}
+                        whileHover={{ scale: 1.05 }}
                     >
-                        <p className="mb-2 text-sm">Scroll to explore</p>
+                        {/* Glowing text */}
+                        <p className="mb-3 text-base font-medium text-pink-600 drop-shadow-lg"
+                           style={{
+                               textShadow: "0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3)"
+                           }}>
+                            Scroll to explore
+                        </p>
+
+                        {/* Smoother bouncing dots */}
                         <div className="flex flex-col items-center gap-1">
-                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce [animation-delay:-0.3s]"></div>
-                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce [animation-delay:-0.15s]"></div>
-                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce"></div>
+                            <motion.div
+                                className="h-2 w-2 rounded-full bg-pink-400"
+                                animate={{ y: [0, -6, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 1.5,
+                                    ease: "easeInOut",
+                                    delay: 0,
+                                    repeatDelay: 0.1
+                                }}
+                                style={{ boxShadow: "0 0 8px rgba(236, 72, 153, 0.6)" }}
+                            />
+                            <motion.div
+                                className="h-2 w-2 rounded-full bg-pink-400"
+                                animate={{ y: [0, -6, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 1.5,
+                                    ease: "easeInOut",
+                                    delay: 0.2,
+                                    repeatDelay: 0.1
+                                }}
+                                style={{ boxShadow: "0 0 8px rgba(236, 72, 153, 0.6)" }}
+                            />
+                            <motion.div
+                                className="h-2 w-2 rounded-full bg-pink-400"
+                                animate={{ y: [0, -6, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 1.5,
+                                    ease: "easeInOut",
+                                    delay: 0.4,
+                                    repeatDelay: 0.1
+                                }}
+                                style={{ boxShadow: "0 0 8px rgba(236, 72, 153, 0.6)" }}
+                            />
                         </div>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </div>
