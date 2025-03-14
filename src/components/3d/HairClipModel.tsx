@@ -217,5 +217,5 @@ function createHeartShape(size = 1) {
 
     return shape;
 }
-
 export default HairClipModel;
+

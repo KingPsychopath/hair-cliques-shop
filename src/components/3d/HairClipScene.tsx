@@ -5,7 +5,7 @@ import HairClipModel from './HairClipModel';
 
 export default function HairClipScene({ scrollY = 0 }) {
     return (
-        <div className="h-full w-full">
+        <div className="absolute inset-0 -z-10 h-screen w-full opacity-90">
             <Canvas shadows dpr={[1, 2]}>
                 {/* Ambient lighting */}
                 <ambientLight intensity={0.8} />
