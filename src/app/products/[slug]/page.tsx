@@ -92,10 +92,7 @@ const products = {
         description:
             'Express your love for great hair with our heart-shaped magnetic hair clip. The innovative magnetic design provides a secure hold without pulling or damaging your beautiful locks.',
         price: 20.99,
-        images: [
-            '/heartclip.jpg',
-            '/heartclip2.jpg',
-        ],
+        images: ['/heartclip.jpg', '/heartclip2.jpg'],
         colors: [
             { name: 'Purple', value: '#9C27B0' },
             { name: 'Pink', value: '#FF80AB' },

@@ -22,19 +22,19 @@ export function Header() {
                     <nav className="hidden gap-6 md:flex">
                         <Link
                             href="/shop"
-                            className="relative text-sm font-medium text-pink-500 transition-colors hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:after:w-full"
+                            className="relative text-sm font-medium text-pink-500 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:text-pink-600 hover:after:w-full"
                         >
                             Shop
                         </Link>
                         <Link
                             href="/about"
-                            className="relative text-sm font-medium text-pink-500 transition-colors hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:after:w-full"
+                            className="relative text-sm font-medium text-pink-500 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:text-pink-600 hover:after:w-full"
                         >
                             Our Story
                         </Link>
                         <Link
                             href="/contact"
-                            className="relative text-sm font-medium text-pink-500 transition-colors hover:text-pink-600 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:after:w-full"
+                            className="relative text-sm font-medium text-pink-500 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-pink-500 after:transition-all after:duration-300 hover:text-pink-600 hover:after:w-full"
                         >
                             Contact
                         </Link>

@@ -284,7 +284,9 @@ export default function About() {
                                         className="object-cover"
                                     />
                                 </div>
-                                <h3 className="text-xl font-medium text-pink-600">Maya Rodriguez</h3>
+                                <h3 className="text-xl font-medium text-pink-600">
+                                    Maya Rodriguez
+                                </h3>
                                 <p className="text-pink-700">Lead Designer</p>
                             </motion.div>
 

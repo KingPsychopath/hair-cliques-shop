@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Heart, Filter, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Product database
 const shopProducts = [
@@ -14,7 +15,7 @@ const shopProducts = [
         id: 1,
         name: 'Star Hair Clique - Aqua Blue',
         price: '$19.99',
-        image: 'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
+        image: 'https://i.kickstarter.com/assets/047/956/098/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg?fit=scale-down&origin=ugc&q=92&v=1737832349&width=680&sig=kifSLLI%2FhscJaG75qnHtD2dgxHZzE%2FHxafbsf1%2BvNhc%3D',
         colors: ['#5CE1E6', '#FF80AB', '#FFD700', '#9C27B0'],
         category: 'Stars',
         featured: true,
@@ -25,7 +26,7 @@ const shopProducts = [
         id: 2,
         name: 'Bow Hair Clique - Pink',
         price: '$18.99',
-        image: 'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+        image: 'https://i.kickstarter.com/assets/047/931/840/37c2df67a3c683473664a303696e80cd_original.gif?fit=scale-down&origin=ugc&q=92&v=1737638809&width=680&sig=%2BpSgGJYDK5SBixZgM3HdYUhE62vKelLi5R6HoET5ljo%3D',
         colors: ['#FF80AB', '#5CE1E6', '#FFD700', '#9C27B0'],
         category: 'Bows',
         featured: true,
@@ -35,7 +36,7 @@ const shopProducts = [
         id: 3,
         name: 'Heart Hair Clique - Purple',
         price: '$20.99',
-        image: 'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
+        image: '/heartclip.jpg',
         colors: ['#9C27B0', '#FF80AB', '#5CE1E6', '#FFD700'],
         category: 'Hearts',
         featured: true,
@@ -46,7 +47,7 @@ const shopProducts = [
         id: 4,
         name: 'Round Hair Clique - Gold',
         price: '$17.99',
-        image: 'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+        image: 'https://i.kickstarter.com/assets/047/909/932/566bd1ba5c60dc97f765d103af5a80eb_original.jpg?fit=scale-down&origin=ugc&q=92&v=1737492158&width=680&sig=0NpS6gAZqct1cwgrIh66inRBUhfuOnhDpy4kizVnFeU%3D',
         colors: ['#FFD700', '#9C27B0', '#FF80AB', '#5CE1E6'],
         category: 'Classic',
         featured: true,
@@ -246,10 +247,13 @@ export default function Shop() {
 
                                 <Link href={`/products/${product.slug}`} className="block">
                                     <div className="relative aspect-square overflow-hidden">
-                                        <img
+                                        <Image
                                             src={product.image}
                                             alt={product.name}
-                                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                            priority={product.featured}
                                         />
                                         <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                                         <Button

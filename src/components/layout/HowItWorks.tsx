@@ -1,30 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const steps = [
     {
         id: 1,
         title: 'Form your hairstyle',
         description: 'Create the hairstyle you want - ponytail, bun, or half-up style.',
-        image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=400&auto=format&fit=crop',
+        image: 'https://i.kickstarter.com/assets/047/909/932/566bd1ba5c60dc97f765d103af5a80eb_original.jpg?fit=scale-down&origin=ugc&q=92&v=1737492158&width=680&sig=0NpS6gAZqct1cwgrIh66inRBUhfuOnhDpy4kizVnFeU%3D',
     },
     {
         id: 2,
         title: 'Position the clip halves',
         description: 'Place one half of the clip above your hair and the other half below.',
-        image: 'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+        image: 'https://i.kickstarter.com/assets/047/956/094/90047f0980ccc92d7d02cfca56bd62d9_original.gif?fit=scale-down&origin=ugc&q=92&v=1737832313&width=680&sig=fkNgQPS4YiU8BXiPfYCjzq3OKZtXt8sXFc%2BDSJk4dm0%3D',
     },
     {
         id: 3,
         title: 'Let the magnets connect',
         description: 'The powerful magnets will attract and securely hold your hair in place.',
-        image: 'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
+        image: 'https://i.kickstarter.com/assets/047/931/840/37c2df67a3c683473664a303696e80cd_original.gif?fit=scale-down&origin=ugc&q=92&v=1737638809&width=680&sig=%2BpSgGJYDK5SBixZgM3HdYUhE62vKelLi5R6HoET5ljo%3D',
     },
     {
         id: 4,
         title: 'Enjoy your style all day',
         description: 'Your hair stays perfectly styled without tension or damage.',
-        image: 'https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?q=80&w=400&auto=format&fit=crop',
+        image: '/enjoy-hair.jpg',
     },
 ];
 
@@ -52,10 +53,13 @@ export function HowItWorks() {
                         >
                             <div className="relative">
                                 <div className="relative mx-auto mb-6 aspect-square max-w-[200px] overflow-hidden rounded-full border-4 border-pink-200">
-                                    <img
+                                    <Image
                                         src={step.image}
                                         alt={step.title}
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        sizes="(max-width: 640px) 33vw, 200px"
+                                        className="object-cover"
+                                        priority={step.id === 1}
                                     />
                                     <div className="absolute inset-0 bg-linear-to-t from-pink-600/40 to-transparent"></div>
                                     <div className="absolute top-1/2 left-1/2 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-pink-500 text-2xl font-bold text-white">

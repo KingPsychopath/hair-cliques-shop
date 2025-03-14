@@ -9,31 +9,12 @@ const nextConfig: NextConfig = {
         ignoreDuringBuilds: !process.env.CI,
     },
     images: {
-        domains: ['source.unsplash.com', 'images.unsplash.com', 'web-assets.same.dev', 'pbs.twimg.com'],
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'source.unsplash.com',
+                hostname: '**',
                 port: '',
-                pathname: '/**',
-            },
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-                port: '',
-                pathname: '/**',
-            },
-            {
-                protocol: 'https',
-                hostname: 'web-assets.same.dev',
-                port: '',
-                pathname: '/**',
-            },
-            {
-                protocol: 'https',
-                hostname: 'pbs.twimg.com',
-                port: '',
-                pathname: '/media/**',
+                pathname: '**',
             },
         ],
     },

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Heart } from 'lucide-react';
@@ -85,10 +86,13 @@ export function FeaturedProducts() {
                         >
                             <Link href={`/products/${product.slug}`} className="block">
                                 <div className="relative aspect-square overflow-hidden">
-                                    <img
+                                    <Image
                                         src={product.image}
                                         alt={product.name}
-                                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                        priority={product.featured}
                                     />
                                     <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                                     <Button
