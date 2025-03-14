@@ -22,6 +22,9 @@ export function HairClipModel({ scrollY = 0 }) {
         if (group.current) {
             const time = clock.getElapsedTime();
 
+            // Add initial position to make sure it's in view
+            group.current.position.set(0, 0, 0);
+
             // Rotate based on scroll position and add gentle floating movement
             group.current.rotation.y = scrollY * 0.2 + Math.sin(time * 0.5) * 0.1;
             group.current.position.y = Math.sin(time * 0.5) * 0.1;
@@ -51,7 +54,7 @@ export function HairClipModel({ scrollY = 0 }) {
     });
 
     return (
-        <group ref={group} dispose={null}>
+        <group ref={group} position={[0, 0, 0]} scale={1.5} dispose={null}>
             {/* Star shape base */}
             <mesh position={[0, 0, 0]} castShadow receiveShadow>
                 <extrudeGeometry

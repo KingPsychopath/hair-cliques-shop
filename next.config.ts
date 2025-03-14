@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         ignoreDuringBuilds: !process.env.CI,
     },
     images: {
-        domains: ['source.unsplash.com', 'images.unsplash.com', 'web-assets.same.dev'],
+        domains: ['source.unsplash.com', 'images.unsplash.com', 'web-assets.same.dev', 'pbs.twimg.com'],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
                 hostname: 'web-assets.same.dev',
                 port: '',
                 pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'pbs.twimg.com',
+                port: '',
+                pathname: '/media/**',
             },
         ],
     },

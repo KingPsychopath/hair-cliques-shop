@@ -46,10 +46,12 @@ export default function About() {
                                 viewport={{ once: true }}
                             >
                                 <div className="relative aspect-square overflow-hidden rounded-xl shadow-lg">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop"
+                                    <Image
+                                        src="https://pbs.twimg.com/media/GdAFcTDXwAAF64z?format=jpg&name=large"
                                         alt="Woman with curly hair"
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-linear-to-t from-pink-600/30 to-transparent"></div>
                                 </div>
@@ -256,13 +258,14 @@ export default function About() {
                                 className="text-center"
                             >
                                 <div className="relative mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&h=200&auto=format&fit=crop"
-                                        alt="Jessica Chen"
-                                        className="h-full w-full object-cover"
+                                    <Image
+                                        src="https://pbs.twimg.com/media/GdAFcTDXwAAF64z?format=jpg&name=large"
+                                        alt="Breana Askew"
+                                        fill
+                                        className="object-cover"
                                     />
                                 </div>
-                                <h3 className="text-xl font-medium text-pink-600">Jessica Chen</h3>
+                                <h3 className="text-xl font-medium text-pink-600">Breana Askew</h3>
                                 <p className="text-pink-700">Founder & CEO</p>
                             </motion.div>
 
@@ -273,16 +276,15 @@ export default function About() {
                                 viewport={{ once: true }}
                                 className="text-center"
                             >
-                                <div className="mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
-                                    <img
+                                <div className="relative mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
+                                    <Image
                                         src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&h=200&auto=format&fit=crop"
                                         alt="Maya Rodriguez"
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        className="object-cover"
                                     />
                                 </div>
-                                <h3 className="text-xl font-medium text-pink-600">
-                                    Maya Rodriguez
-                                </h3>
+                                <h3 className="text-xl font-medium text-pink-600">Maya Rodriguez</h3>
                                 <p className="text-pink-700">Lead Designer</p>
                             </motion.div>
 
@@ -293,11 +295,12 @@ export default function About() {
                                 viewport={{ once: true }}
                                 className="text-center"
                             >
-                                <div className="mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
-                                    <img
+                                <div className="relative mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
+                                    <Image
                                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop"
                                         alt="David Kim"
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        className="object-cover"
                                     />
                                 </div>
                                 <h3 className="text-xl font-medium text-pink-600">David Kim</h3>
@@ -311,11 +314,12 @@ export default function About() {
                                 viewport={{ once: true }}
                                 className="text-center"
                             >
-                                <div className="mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
-                                    <img
+                                <div className="relative mx-auto mb-4 h-40 w-40 overflow-hidden rounded-full">
+                                    <Image
                                         src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=200&h=200&auto=format&fit=crop"
                                         alt="Sarah Johnson"
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        className="object-cover"
                                     />
                                 </div>
                                 <h3 className="text-xl font-medium text-pink-600">Sarah Johnson</h3>

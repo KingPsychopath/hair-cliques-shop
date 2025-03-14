@@ -1,11 +1,11 @@
 import React, { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, PerspectiveCamera, Stars } from '@react-three/drei';
+import { OrbitControls, Environment, PerspectiveCamera, Stars, Grid } from '@react-three/drei';
 import HairClipModel from './HairClipModel';
 
 export default function HairClipScene({ scrollY = 0 }) {
     return (
-        <div className="absolute inset-0 -z-10 h-full w-full opacity-90">
+        <div className="h-full w-full">
             <Canvas shadows dpr={[1, 2]}>
                 {/* Ambient lighting */}
                 <ambientLight intensity={0.8} />
@@ -27,7 +27,9 @@ export default function HairClipScene({ scrollY = 0 }) {
                 <pointLight position={[0, -10, 0]} intensity={0.2} color="#fff" />
 
                 {/* Set up camera */}
-                <PerspectiveCamera makeDefault position={[0, 0, 4.5]} fov={35} />
+                <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={50} />
+
+                <Grid args={[10, 10]} />
 
                 <Suspense fallback={null}>
                     {/* The hair clip model */}

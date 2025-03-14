@@ -8,11 +8,13 @@ export function Hero() {
     const scrollY = useScrollPosition();
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-linear-to-b from-white via-pink-50 to-purple-50">
-            {/* 3D Model Animation */}
-            <HairClipScene scrollY={scrollY} />
+        <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-pink-50 to-purple-50">
+            {/* 3D Model Animation - Move this after the content */}
+            <div className="absolute inset-0 z-0">
+                <HairClipScene scrollY={scrollY} />
+            </div>
 
-            {/* Hero Content */}
+            {/* Hero Content - Update z-index */}
             <div className="relative z-10 container pt-32 pb-36 md:pt-40 md:pb-48">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
