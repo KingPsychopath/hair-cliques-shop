@@ -17,8 +17,8 @@ const products = {
             'Our star-shaped magnetic hair clip provides excellent hold while adding a touch of celestial elegance to your hairstyle. Perfect for all hair types and textures.',
         price: 19.99,
         images: [
-            'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
-            'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+            'https://i.kickstarter.com/assets/047/956/098/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg?fit=scale-down&origin=ugc&q=92&v=1737832349&width=680&sig=kifSLLI%2FhscJaG75qnHtD2dgxHZzE%2FHxafbsf1%2BvNhc%3D',
+            'https://i.kickstarter.com/assets/047/956/089/c30fce263e41565dde59c83db9f1d4b7_original.jpeg?fit=scale-down&origin=ugc&q=92&v=1737832284&width=680&sig=7xSQKXvZW9R%2BzuRYbjchtwOeuDZT3JQUuMF3aTQyQnI%3D',
         ],
         colors: [
             { name: 'Aqua Blue', value: '#5CE1E6' },
@@ -55,7 +55,7 @@ const products = {
             'Add a touch of feminine charm to your hairstyle with our bow-shaped magnetic hair clip. The powerful magnetic closure ensures your style stays in place all day without causing damage.',
         price: 18.99,
         images: [
-            'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+            'https://i.kickstarter.com/assets/047/931/840/37c2df67a3c683473664a303696e80cd_original.gif?fit=scale-down&origin=ugc&q=92&v=1737638809&width=680&sig=%2BpSgGJYDK5SBixZgM3HdYUhE62vKelLi5R6HoET5ljo%3D',
             'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
         ],
         colors: [
@@ -93,8 +93,8 @@ const products = {
             'Express your love for great hair with our heart-shaped magnetic hair clip. The innovative magnetic design provides a secure hold without pulling or damaging your beautiful locks.',
         price: 20.99,
         images: [
-            'https://i.kickstarter.com/assets/047/931/634/41303b8f4cb52ca1b9f9a2dcc1a592ff_original.jpg',
-            'https://i.kickstarter.com/assets/047/910/042/a24f91ace19a0a8891f9dba42d9eee9d_original.jpeg',
+            '/heartclip.jpg',
+            '/heartclip2.jpg',
         ],
         colors: [
             { name: 'Purple', value: '#9C27B0' },
