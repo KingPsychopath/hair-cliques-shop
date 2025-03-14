@@ -3,12 +3,21 @@ import { Button } from '@/components/ui/button';
 import HairClipScene from '@/components/3d/HairClipScene';
 import { useScrollPosition } from '@/lib/hooks/useScrollPosition';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export function Hero() {
     const scrollY = useScrollPosition();
 
+    const handleScrollClick = () => {
+        // Find the next section after hero and scroll to it smoothly
+        const nextSection = document.querySelector('.hero-section + *');
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-pink-50 to-purple-50">
+        <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-pink-50 to-purple-50 hero-section">
             {/* 3D Model Animation - Move this after the content */}
             <div className="absolute inset-0 z-0">
                 <HairClipScene scrollY={scrollY} />
@@ -36,18 +45,6 @@ export function Hero() {
                         Magnetic hair clips designed to hold hair in a low tension style. Works for
                         all hair textures and types.
                     </p>
-
-                    <div className="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
-                        <Button className="rounded-full bg-pink-500 px-8 py-6 text-white hover:bg-pink-600">
-                            Shop Now
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="rounded-full border-pink-300 px-8 py-6 text-pink-600 hover:bg-pink-100"
-                        >
-                            Learn More
-                        </Button>
-                    </div>
 
                     {/* Features */}
                     <div className="grid grid-cols-1 gap-8 pt-16 md:grid-cols-3">
@@ -87,6 +84,22 @@ export function Hero() {
                             </p>
                         </motion.div>
                     </div>
+
+                    <div className="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
+                        <Link href="/shop">
+                            <Button className="rounded-full bg-pink-500 px-8 py-6 text-white hover:bg-pink-600">
+                                Shop Now
+                            </Button>
+                        </Link>
+                        <Link href="/about">
+                            <Button
+                                variant="outline"
+                                className="rounded-full border-pink-300 px-8 py-6 text-pink-600 hover:bg-pink-100"
+                            >
+                                Learn More
+                            </Button>
+                        </Link>
+                    </div>
                 </motion.div>
 
                 {/* Scroll indicator */}
@@ -96,9 +109,19 @@ export function Hero() {
                     transition={{ delay: 1, duration: 1 }}
                     className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
                 >
-                    <div className="flex flex-col items-center text-pink-400">
+                    <div
+                        className="flex flex-col items-center text-pink-400 cursor-pointer hover:text-pink-500 transition-colors"
+                        onClick={handleScrollClick}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={(e) => e.key === 'Enter' && handleScrollClick()}
+                    >
                         <p className="mb-2 text-sm">Scroll to explore</p>
-                        <div className="h-8 w-0.5 animate-pulse bg-pink-300"></div>
+                        <div className="flex flex-col items-center gap-1">
+                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce [animation-delay:-0.3s]"></div>
+                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce [animation-delay:-0.15s]"></div>
+                            <div className="h-2 w-2 rounded-full bg-pink-300 animate-bounce"></div>
+                        </div>
                     </div>
                 </motion.div>
             </div>

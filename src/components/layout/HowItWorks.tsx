@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Check } from 'lucide-react';
 
 const steps = [
     {
@@ -81,46 +82,46 @@ export function HowItWorks() {
                     ))}
                 </div>
 
-                <div className="mx-auto mt-16 max-w-3xl rounded-2xl bg-pink-50 p-8">
-                    <h3 className="mb-4 text-center text-xl font-bold text-pink-600">
+                <div className="mx-auto mt-16 max-w-3xl rounded-3xl bg-gradient-to-br from-pink-50 to-purple-50/50 p-10 shadow-sm">
+                    <h3 className="mb-6 text-center text-2xl font-bold text-pink-600">
                         Why Magnetic Hair Clips?
                     </h3>
-                    <ul className="space-y-3">
-                        <li className="flex items-start">
-                            <div className="mt-0.5 mr-3 flex h-5 w-5 items-center justify-center rounded-full bg-pink-400 text-xs font-bold text-white">
-                                ✓
+                    <ul className="space-y-6">
+                        <li className="flex items-center gap-4">
+                            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-pink-500 shadow-sm">
+                                <Check className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                             </div>
                             <p className="text-pink-700">
-                                <span className="font-semibold">No Pulling:</span> Unlike
+                                <span className="font-semibold">No Pulling</span> — Unlike
                                 traditional clips that grip and pull hair, our magnetic design
                                 distributes tension evenly.
                             </p>
                         </li>
-                        <li className="flex items-start">
-                            <div className="mt-0.5 mr-3 flex h-5 w-5 items-center justify-center rounded-full bg-pink-400 text-xs font-bold text-white">
-                                ✓
+                        <li className="flex items-center gap-4">
+                            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-pink-500 shadow-sm">
+                                <Check className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                             </div>
                             <p className="text-pink-700">
-                                <span className="font-semibold">Less Breakage:</span> The gentle
+                                <span className="font-semibold">Less Breakage</span> — The gentle
                                 hold prevents hair breakage and split ends common with conventional
                                 clips.
                             </p>
                         </li>
-                        <li className="flex items-start">
-                            <div className="mt-0.5 mr-3 flex h-5 w-5 items-center justify-center rounded-full bg-pink-400 text-xs font-bold text-white">
-                                ✓
+                        <li className="flex items-center gap-4">
+                            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-pink-500 shadow-sm">
+                                <Check className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                             </div>
                             <p className="text-pink-700">
-                                <span className="font-semibold">All Hair Types:</span> Works for all
+                                <span className="font-semibold">All Hair Types</span> — Works for all
                                 hair textures from straight and fine to thick and curly.
                             </p>
                         </li>
-                        <li className="flex items-start">
-                            <div className="mt-0.5 mr-3 flex h-5 w-5 items-center justify-center rounded-full bg-pink-400 text-xs font-bold text-white">
-                                ✓
+                        <li className="flex items-center gap-4">
+                            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-pink-500 shadow-sm">
+                                <Check className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                             </div>
                             <p className="text-pink-700">
-                                <span className="font-semibold">Stylish Designs:</span> Beautiful
+                                <span className="font-semibold">Stylish Designs</span> — Beautiful
                                 shapes and colors to complement any outfit or occasion.
                             </p>
                         </li>

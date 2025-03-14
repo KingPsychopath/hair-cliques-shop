@@ -1,15 +1,40 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Heart, Star, ChevronRight, Share2, Truck, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
-// Product database
-const products = {
+type Product = {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    images: string[];
+    colors: { name: string; value: string; }[];
+    features: string[];
+    specs: {
+        dimensions: string;
+        weight: string;
+        materials: string;
+        warranty: string;
+    };
+    reviews: {
+        average: number;
+        count: number;
+    };
+    category: string;
+    related: string[];
+    inStock: boolean;
+    bestseller?: boolean;
+    new?: boolean;
+};
+
+const products: Record<string, Product> = {
     'star-hair-clique': {
         id: 1,
         name: 'Star Hair Clique',
@@ -141,11 +166,20 @@ const StarRating = ({ rating }: { rating: number }) => {
     );
 };
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = use(params);
+    const [selectedColor, setSelectedColor] = useState({ name: '', value: '' });
+    const [quantity, setQuantity] = useState(1);
+    const [activeImage, setActiveImage] = useState(0);
+    const product = products[slug as keyof typeof products];
 
-    // Check if the product exists
-    if (!products[slug as keyof typeof products]) {
+    React.useEffect(() => {
+        if (product) {
+            setSelectedColor(product.colors[0]);
+        }
+    }, [product]);
+
+    if (!product) {
         return (
             <div className="flex min-h-screen flex-col">
                 <Header />
@@ -166,14 +200,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
         );
     }
-
-    // Get the product
-    const product = products[slug as keyof typeof products];
-
-    // State for selected color and quantity
-    const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-    const [quantity, setQuantity] = useState(1);
-    const [activeImage, setActiveImage] = useState(0);
 
     // Format price
     const formattedPrice = new Intl.NumberFormat('en-US', {
@@ -216,10 +242,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                             {/* Product images */}
                             <div className="space-y-4">
                                 <div className="relative aspect-square overflow-hidden rounded-xl border border-pink-100">
-                                    <img
+                                    <Image
                                         src={product.images[activeImage]}
                                         alt={product.name}
-                                        className="h-full w-full object-cover"
+                                        fill
+                                        className="object-cover"
+                                        priority
                                     />
                                     {product.bestseller && (
                                         <div className="absolute top-4 left-4 rounded bg-pink-500 px-2 py-1 text-xs font-medium text-white">
@@ -252,9 +280,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                                             }`}
                                             onClick={() => setActiveImage(index)}
                                         >
-                                            <img
+                                            <Image
                                                 src={image}
                                                 alt={`${product.name} - view ${index + 1}`}
+                                                width={64}
+                                                height={64}
                                                 className="h-full w-full object-cover"
                                             />
                                         </button>
