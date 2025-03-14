@@ -1,19 +1,132 @@
-import React, { Suspense, useRef, useCallback, type ComponentRef, useState } from 'react';
+import React, { Suspense, useRef, useCallback, type ComponentRef, useState, useEffect, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, PerspectiveCamera, Stars, useProgress, Html } from '@react-three/drei';
 import type { OrbitControls as DreiOrbitControls } from '@react-three/drei';
 import HairClipModel from './HairClipModel';
 import { useFrame } from '@react-three/fiber';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Loading screen component
+// Enhanced loading screen component with beautiful minimalist design
 function Loader() {
-    const { progress } = useProgress();
+    const { progress, active } = useProgress();
+    const [showLoader, setShowLoader] = useState(true);
+
+    // Keep loader visible for at least 800ms after loading completes
+    // to prevent jarring transitions
+    useEffect(() => {
+        if (progress === 100 && !active) {
+            const timer = setTimeout(() => {
+                setShowLoader(false);
+            }, 800);
+            return () => clearTimeout(timer);
+        }
+    }, [progress, active]);
+
     return (
-        <Html center>
-            <div className="text-pink-500 text-lg">
-                Loading... {progress.toFixed(0)}%
-            </div>
-        </Html>
+        <AnimatePresence>
+            {showLoader && (
+                <motion.div
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 via-pink-100 to-pink-200 z-50"
+                >
+                    <motion.div
+                        className="relative w-24 h-24"
+                        animate={{
+                            scale: [1, 1.05, 1],
+                            rotate: 360
+                        }}
+                        transition={{
+                            scale: {
+                                repeat: Infinity,
+                                duration: 2,
+                                ease: "easeInOut"
+                            },
+                            rotate: {
+                                repeat: Infinity,
+                                duration: 8,
+                                ease: "linear"
+                            }
+                        }}
+                    >
+                        {/* Outer glow effect */}
+                        <div className="absolute inset-0 rounded-full bg-pink-200 opacity-30 blur-md"
+                             style={{
+                                 animation: "pulse 2s infinite ease-in-out",
+                                 transform: `scale(${1.2 + (progress / 500)})`
+                             }}
+                        />
+
+                        {/* Main progress circle */}
+                        <svg
+                            viewBox="0 0 100 100"
+                            className="absolute inset-0 drop-shadow-lg"
+                            style={{ filter: "drop-shadow(0px 0px 8px rgba(236, 72, 153, 0.5))" }}
+                        >
+                            {/* Background circle */}
+                            <circle
+                                cx="50" cy="50" r="45"
+                                fill="none"
+                                stroke="rgba(236, 72, 153, 0.2)"
+                                strokeWidth="4"
+                            />
+
+                            {/* Progress circle */}
+                            <circle
+                                cx="50" cy="50" r="45"
+                                fill="none"
+                                stroke="rgba(236, 72, 153, 0.9)"
+                                strokeWidth="6"
+                                strokeLinecap="round"
+                                strokeDasharray="283"
+                                strokeDashoffset={283 - (283 * progress) / 100}
+                                transform="rotate(-90 50 50)"
+                                style={{
+                                    transition: "stroke-dashoffset 0.3s ease"
+                                }}
+                            />
+
+                            {/* Decorative elements */}
+                            <motion.circle
+                                cx="50" cy="5" r="3"
+                                fill="#EC4899"
+                                animate={{
+                                    opacity: [0.5, 1, 0.5],
+                                    scale: [0.8, 1.2, 0.8]
+                                }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 2,
+                                    ease: "easeInOut"
+                                }}
+                            />
+
+                            {/* Small decorative dots around the circle */}
+                            {[0, 60, 120, 180, 240, 300].map((angle, i) => (
+                                <motion.circle
+                                    key={i}
+                                    cx={50 + 45 * Math.cos(angle * Math.PI / 180)}
+                                    cy={50 + 45 * Math.sin(angle * Math.PI / 180)}
+                                    r="2"
+                                    fill="#EC4899"
+                                    animate={{
+                                        opacity: [0.3, 0.8, 0.3],
+                                        scale: [0.8, 1.2, 0.8]
+                                    }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 2,
+                                        delay: i * 0.3,
+                                        ease: "easeInOut"
+                                    }}
+                                />
+                            ))}
+                        </svg>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 }
 
@@ -85,10 +198,81 @@ function AnimatedScene({ scrollY, isNightMode, transitionProgress }: { scrollY: 
     );
 }
 
+// Main scene component with 3D content
+function Scene({ scrollY, isNightMode, transitionProgress }: { scrollY: number; isNightMode: boolean; transitionProgress: number }) {
+    return (
+        <Canvas
+            shadows
+            dpr={[1, 1.5]}
+            performance={{ min: 0.5 }}
+            gl={{
+                powerPreference: "high-performance",
+                antialias: true,
+                alpha: true,
+                stencil: false
+            }}
+        >
+            <Suspense fallback={null}>
+                <ambientLight intensity={isNightMode ? 0.6 - transitionProgress * 0.2 : 0.6 + transitionProgress * 0.2} />
+                <spotLight
+                    position={[10, 10, 10]}
+                    angle={0.15}
+                    penumbra={1}
+                    intensity={isNightMode ? 1.5 - transitionProgress * 0.5 : 1.5 + transitionProgress * 0.5}
+                    castShadow
+                    color={isNightMode
+                        ? `rgb(${235 - transitionProgress * 30}, ${220 - transitionProgress * 40}, ${250 - transitionProgress * 20})`
+                        : `rgb(${255}, ${200 + transitionProgress * 4}, ${100 + transitionProgress * 113})`
+                    }
+                />
+                <pointLight
+                    position={[-10, 5, -10]}
+                    intensity={isNightMode ? 0.3 - transitionProgress * 0.1 : 0.3 + transitionProgress * 0.2}
+                    color={isNightMode
+                        ? `rgb(${180 - transitionProgress * 30}, ${180 - transitionProgress * 20}, ${250 - transitionProgress * 20})`
+                        : `rgb(${196 + transitionProgress * 59}, ${241}, ${249})`
+                    }
+                />
+                <pointLight
+                    position={[0, -10, 0]}
+                    intensity={0.2}
+                    color="#fff"
+                />
+                <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={50} />
+                <AnimatedScene
+                    scrollY={scrollY}
+                    isNightMode={isNightMode}
+                    transitionProgress={transitionProgress}
+                />
+                <Environment preset={isNightMode ? "night" : "sunset"} />
+            </Suspense>
+        </Canvas>
+    );
+}
+
 export default function HairClipScene({ scrollY = 0 }) {
     const [isNightMode, setIsNightMode] = useState(false);
     const [transitionProgress, setTransitionProgress] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [sceneLoaded, setSceneLoaded] = useState(false);
+    const [isSceneReady, setIsSceneReady] = useState(false);
+
+    // Mark scene as loaded when it's first rendered
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSceneLoaded(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Delay scene rendering to prevent layout shifts
+    useEffect(() => {
+        // Use a longer timeout to ensure the page has fully loaded
+        const timer = setTimeout(() => {
+            setIsSceneReady(true);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Smooth transition effect with easing
     React.useEffect(() => {
@@ -151,11 +335,14 @@ export default function HairClipScene({ scrollY = 0 }) {
 
     return (
         <div className="relative h-screen w-full overflow-hidden">
-            <PullString
-                isNightMode={isNightMode}
-                onClick={() => setIsNightMode(!isNightMode)}
-                isTransitioning={isTransitioning}
-            />
+            {/* Only show pull string after scene is loaded */}
+            {sceneLoaded && (
+                <PullString
+                    isNightMode={isNightMode}
+                    onClick={() => setIsNightMode(!isNightMode)}
+                    isTransitioning={isTransitioning}
+                />
+            )}
 
             {/* Sun/Moon */}
             <div
@@ -181,53 +368,18 @@ export default function HairClipScene({ scrollY = 0 }) {
                     transition: 'all 3000ms cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             >
-                <Canvas
-                    shadows
-                    dpr={[1, 1.5]}
-                    performance={{ min: 0.5 }}
-                    gl={{
-                        powerPreference: "high-performance",
-                        antialias: true,
-                        alpha: true,
-                        stencil: false
-                    }}
-                >
-                    <Suspense fallback={<Loader />}>
-                        <ambientLight intensity={isNightMode ? 0.6 - transitionProgress * 0.2 : 0.6 + transitionProgress * 0.2} />
-                        <spotLight
-                            position={[10, 10, 10]}
-                            angle={0.15}
-                            penumbra={1}
-                            intensity={isNightMode ? 1.5 - transitionProgress * 0.5 : 1.5 + transitionProgress * 0.5}
-                            castShadow
-                            color={isNightMode
-                                ? `rgb(${235 - transitionProgress * 30}, ${220 - transitionProgress * 40}, ${250 - transitionProgress * 20})`
-                                : `rgb(${255}, ${200 + transitionProgress * 4}, ${100 + transitionProgress * 113})`
-                            }
-                        />
-                        <pointLight
-                            position={[-10, 5, -10]}
-                            intensity={isNightMode ? 0.3 - transitionProgress * 0.1 : 0.3 + transitionProgress * 0.2}
-                            color={isNightMode
-                                ? `rgb(${180 - transitionProgress * 30}, ${180 - transitionProgress * 20}, ${250 - transitionProgress * 20})`
-                                : `rgb(${196 + transitionProgress * 59}, ${241}, ${249})`
-                            }
-                        />
-                        <pointLight
-                            position={[0, -10, 0]}
-                            intensity={0.2}
-                            color="#fff"
-                        />
-                        <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={50} />
-                        <AnimatedScene
-                            scrollY={scrollY}
-                            isNightMode={isNightMode}
-                            transitionProgress={transitionProgress}
-                        />
-                        <Environment preset={isNightMode ? "night" : "sunset"} />
-                    </Suspense>
-                </Canvas>
+                {/* Only render the 3D scene when ready to prevent layout shifts */}
+                {isSceneReady && (
+                    <Scene
+                        scrollY={scrollY}
+                        isNightMode={isNightMode}
+                        transitionProgress={transitionProgress}
+                    />
+                )}
             </div>
+
+            {/* Loader outside the Canvas to prevent layout shifts */}
+            <Loader />
         </div>
     );
 }

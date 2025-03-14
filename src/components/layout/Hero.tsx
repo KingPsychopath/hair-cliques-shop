@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import HairClipScene from '@/components/3d/HairClipScene';
+import dynamic from 'next/dynamic';
 import { useScrollPosition } from '@/lib/hooks/useScrollPosition';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+// Dynamically import the 3D scene with no SSR to prevent hydration issues
+const HairClipScene = dynamic(() => import('@/components/3d/HairClipScene'), {
+    ssr: false,
+    loading: () => (
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-pink-50 to-purple-50" />
+    )
+});
+
 export function Hero() {
     const scrollY = useScrollPosition();
     const [pulseEffect, setPulseEffect] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     // Create a pulsing effect for the scroll indicator
     useEffect(() => {
@@ -16,6 +25,16 @@ export function Hero() {
         }, 2000);
 
         return () => clearInterval(interval);
+    }, []);
+
+    // Set a flag when component is mounted to ensure hydration is complete
+    useEffect(() => {
+        // Short timeout to ensure the component is fully mounted
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, []);
 
     const handleScrollClick = () => {
@@ -28,9 +47,9 @@ export function Hero() {
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-pink-50 to-purple-50 hero-section">
-            {/* 3D Model Animation - Move this after the content */}
+            {/* 3D Model Animation - Only render when component is loaded */}
             <div className="absolute inset-0 z-0">
-                <HairClipScene scrollY={scrollY} />
+                {isLoaded && <HairClipScene scrollY={scrollY} />}
             </div>
 
             {/* Hero Content - Update z-index */}
